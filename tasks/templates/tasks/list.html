@@ -21,12 +21,18 @@
                     <button class="btn btn-secondary"><i class="fas fa-search"></i></button>
                 </div>
             </div>
-        
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <ul class="task-list">
             {% for task in tasks %}
             <li class="task-item">
                 <span><a href="/task/{{ task.id }}" class="">{{task.title}}</a></span>
-                <span class="fas fa-trash"></span>
+                <a href="deleteTask/{{ task.id }}"><span class="fas fa-trash"></span></a>
                 <a href="editTask/{{ task.id }}"><span class="fas fa-edit"></span></a>
             </li>
             {% endfor %}

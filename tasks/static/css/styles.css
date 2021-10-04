@@ -90,6 +90,16 @@ Busca
     color: #db1e47;
 }
 
+/* Messages */
+
+ul.messages {
+    padding: 0;
+}
+
+ul.messages li {
+    list-style: none;
+}
+
 /* Rodapé */
 
 footer {

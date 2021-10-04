@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render, get_object_or_404, redirect
 from .models import Task
 from .forms import TaskForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -42,6 +43,14 @@ def editTask(request, id):
     else:
         return render(request, 'tasks/editTask.html', {'form': form, 'task': task})
 
+
+def deleteTask(request, id):
+    task = get_object_or_404(Task, pk=id)
+    task.delete()
+
+    messages.info(request, 'Tarefa deletada com sucesso!')
+
+    return redirect('/')
 
 def yourName(request, name):
     return render(request, 'tasks/yourname.html', {'name': name})
