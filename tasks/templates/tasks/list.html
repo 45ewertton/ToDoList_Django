@@ -10,7 +10,7 @@
     <div class="col-12 search-div">
             <div class="row">
                 <div class="col-2 add-div">
-                    <a href="" class="btn btn-primary"><i class="fas fa-plus"></i>Adicionar Tarefa</a> 
+                    <a id="add-link" href="newTask/" class="btn btn-primary"><i class="fas fa-plus"></i>Adicionar Tarefa</a> 
                 </div>
 
                 <div class="col-8" id="linha_2">
@@ -23,26 +23,13 @@
             </div>
         
         <ul class="task-list">
+            {% for task in tasks %}
             <li class="task-item">
-                <span>Título da Tarefa</span>
+                <span><a href="/task/{{ task.id }}" class="">{{task.title}}</a></span>
                 <span class="fas fa-trash"></span>
                 <span class="fas fa-edit"></span>
             </li>
-            <li class="task-item">
-                <span>Título da Tarefa</span>
-                <span class="fas fa-trash"></span>
-                <span class="fas fa-edit"></span>
-            </li>
-            <li class="task-item">
-                <span>Título da Tarefa</span>
-                <span class="fas fa-trash"></span>
-                <span class="fas fa-edit"></span>
-            </li>
-            <li class="task-item">
-                <span>Título da Tarefa</span>
-                <span class="fas fa-trash"></span>
-                <span class="fas fa-edit"></span>
-            </li>
+            {% endfor %}
         </ul>
     </div>
 </div>
