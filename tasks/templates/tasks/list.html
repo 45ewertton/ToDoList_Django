@@ -32,7 +32,7 @@
             {% for task in tasks %}
             <li class="task-item">
                 <span><a href="/task/{{ task.id }}" class="">{{task.title}}</a></span>
-                <a href="deleteTask/{{ task.id }}"><span class="fas fa-trash"></span></a>
+                <a href="deleteTask/{{ task.id }}" class="delete-btn"><span class="fas fa-trash"></span></a>
                 <a href="editTask/{{ task.id }}"><span class="fas fa-edit"></span></a>
             </li>
             {% endfor %}
