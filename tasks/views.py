@@ -3,11 +3,14 @@ from .models import Task
 from .forms import TaskForm
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 
 
 # Create your views here.
 
+
+@login_required
 def taskList(request):
     search = request.GET.get('search')
 
@@ -22,10 +25,12 @@ def taskList(request):
 
     return render(request, 'tasks/list.html', {'tasks': tasks})
 
+@login_required
 def taskView(request, id):
     task = get_object_or_404(Task, pk=id)
     return render(request, 'tasks/task.html', {'task': task})
 
+@login_required
 def newTask(request):
     if request.method == 'POST':
         form = TaskForm(request.POST) 
@@ -39,6 +44,7 @@ def newTask(request):
         form = TaskForm()
         return render(request, 'tasks/addtask.html', {'form': form})
 
+@login_required
 def editTask(request, id):
     task = get_object_or_404(Task, pk=id)
     form = TaskForm(instance=task)
@@ -55,7 +61,7 @@ def editTask(request, id):
     else:
         return render(request, 'tasks/editTask.html', {'form': form, 'task': task})
 
-
+@login_required
 def deleteTask(request, id):
     task = get_object_or_404(Task, pk=id)
     task.delete()

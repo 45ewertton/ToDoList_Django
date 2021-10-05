@@ -134,3 +134,9 @@ footer p {
     top: 50%;
     position: relative;
 }
+
+/* login */
+
+.auth-card {
+    margin-bottom: 30px;
+}
