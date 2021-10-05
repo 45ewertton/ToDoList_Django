@@ -5,19 +5,22 @@
         <h1>Lista de tarefas</h1>
 
         <div class="col-12 search-div">
+            <form method="GET" id="search-form">
                 <div class="row">
                     <div class="col-2 add-div">
                         <a id="add-link" href="newTask/" class="btn btn-primary"><i class="fas fa-plus"></i>Adicionar Tarefa</a> 
                     </div>
 
                     <div class="col-8" id="linha_2">
-                        <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa para buscar...">
+                        <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa para buscar..." value="{{ request.GET.search }}">
                     </div>
 
                     <div class="col-2">
-                        <button class="btn btn-secondary"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-secondary"><i class="fas fa-search" id="search-btn"></i></button>
                     </div>
                 </div>
+            </form>
+
             {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
@@ -40,9 +43,12 @@
                         <a href="?page={{ tasks.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
                     {% endif %}
 
+
+                    {% if tasks.paginator.num_pages %}
                     <span class="current">
                         {{ tasks.number }} de {{ tasks.paginator.num_pages }}
                     </span>
+                    {% endif %}
 
                     {% if tasks.has_next %}
                         <a href="?page={{ tasks.next_page_number }}"><i class="fas fa-arrow-right"></i></a>

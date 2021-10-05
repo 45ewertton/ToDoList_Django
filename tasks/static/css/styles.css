@@ -57,6 +57,10 @@ Busca
 }
 */
 
+/* Lupa */
+.fas.fa-search {
+    cursor: pointer;
+}
 /* Lista de Tarefas */
 
 .list-div {
